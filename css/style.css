@@ -637,7 +637,14 @@ article .learning-sections .learning-section h3 {
 }
 
 article .learning-sections .learning-section h3::after {
-    content: " \2192"
+    content: "\2192";
+    display: inline-block;
+    margin-left: 0.5rem;
+    transition: 200ms transform;
+}
+
+article .learning-sections .learning-section:hover h3::after {
+    transform: rotate(45deg);
 }
 
 article .learning-sections .learning-section ul > *:not(:first-child) {
