@@ -1,8 +1,0 @@
-{
-    "livePreview.defaultPreviewPath": "/index.html",
-    "files.associations": {
-        "stdio.h": "c",
-        "stdlib.h": "c",
-        "timeblock_t.h": "c"
-    }
-}
