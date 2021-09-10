@@ -41,14 +41,14 @@
                 </section>
                 <section id="context">
                     <h2>Design Context</h2>
-                    <p>Note: This project was completed in a group. Two designs were created, but I only talk about the design I had the most influence on.</p>
+                    <p>Note: This project was completed in a group. Two designs were created, detailed below is the design that I had the most influence on.</p>
                     <p>My Electrical and Computer Engineering Design Class tasked me and two others to create a modern tracking tunnel implementation for DOC (Department of Conservation).</p>
                     <div class="article-image">
                         <img src="../images/next_generation_tracking_tunnel/tracking_tunnel.png" alt="Annotated concept for Next Generation Tracking Tunnel">
                         <span class="image-caption">Figure 1: Annotated concept for a Next Generation Tracking Tunnel</span>
                     </div>
-                    <p>Tracking tunnels, in general, are used to gather information regarding the species and number of animals in an area. DOC primarily uses them to track pests. The pests in question consist of stoats and rats. These animals pose a significant threat to endemic wildlife such as Kiwi and other native birds. Therefore, quickly and effectively gathering information about the number of pests in a given area is essential. As part of a next-generation design, we must retain the ability to accurately identify animals and count them, even in high traffic conditions.</p>
-                    <p>The standard tracking tunnel is 100 mm x 100 mm x 615 mm and contains an ink pad and paper for animals to run over. They are baited on one end to encourage animals to move through the tunnel. As previously mentioned, this tracking method can be inaccurate and requires that someone regularly review the paper. Tracking tunnels are used extensively by DOC, and they suggest utilising anywhere from 6 – 20 depending on the amount of land DOC is surveying. Therefore, we designed the tracking tunnel around being cheap and easily deployable.</p>
+                    <p>Tracking tunnels, in general, are used to gather information regarding the species and number of animals in an area. DOC primarily uses them to track pests, in this case primarily stoats and rats. These animals pose a significant threat to endemic wildlife such as Kiwi and other native birds. Therefore, quickly and effectively gathering information about the number of pests in a given area is essential. As part of a next-generation design, we must retain the ability to accurately identify animals and count them, even in high traffic conditions.</p>
+                    <p>The standard tracking tunnel is 100 mm x 100 mm x 615 mm and contains an ink pad and paper for animals to run over. They are baited on one end to encourage animals to move through the tunnel. As previously mentioned, this tracking method can be inaccurate and requires that someone regularly review the paper. Tracking tunnels are used extensively by DOC, and they suggest utilising anywhere from 6 – 20 depending on the amount of land DOC is surveying. Therefore, we designed the tracking tunnel to as economical and easily deployable as possible.</p>
                 </section>
                 <section id="requirements">
                     <h2>Design Requirements / Specifications</h2>
@@ -67,7 +67,7 @@
                             <th>Outputs</th>
                             <td>
                                 <h3>Camera Trigger</h3>
-                                <p>A digital pulse intended to trigger a digital camera 
+                                <p>A digital pulse intended to trigger a digital camera.</p>
                                 <h3>Display</h3>
                                 <p>Visual display of the current running total of animals counted IR Sensor Power: DC voltage to power the IR sensor.</p>
                             </td>
@@ -116,18 +116,18 @@
                 </section>
                 <section id="software">
                     <h2>Software Design</h2>
-                    <p>The software for the Arduino was written in C++ utilising Arduino libraries and a couple of external libraries. Despite the simple description, there are multiple complications. These complications relate to confidence in sensor readings and user interactions.</p>
+                    <p>The software for the Arduino was written in C++ utilising Arduino libraries and a couple of external libraries. Despite the simple description, there are multiple complications. These were related to confidence in sensor readings and user interactions.</p>
                     <p>To improve the user interaction experience, we improved how the Arduino detected user interaction by increasing confidence that a user has initiated action while also simplifying the interaction. To enhance confidence in user initiation, we used "debouncing", a common technique to remove noise commonly associated with push buttons.</p>
                     <p>Debouncing is the process of removing bounces from a button when being pressed or released bounces referring to rapid transitions between 0 and positive voltage. Clean button presses require debouncing due to the possibility of button presses due to small positive voltage. Without debouncing, the button can trigger multiple times for each press, and in some rare cases, triggers without user interaction. We implemented debouncing through physical and software modifications. We used a "pulldown" resistor to reduce the impact of noise. We implemented a state change timer in the software to ensure that the button held a changed state for at least 50ms before registering the press.</p>
-                    <p>This step makes it very unlikely that a quick change in voltage due to bouncing would register while not requiring the user to press the button longer than usual. To further improve the user interaction experience, we opted to remove the reset button and implement its functionality in a long press of the single push button. We found that 1500 ms was long enough to be intentional through testing but short enough not to be frustrating.</p>
-                    <p>We thought this was an essential addition because leaving the LCD, which could trivially happen during the day when it is not easily noticeable, could significantly impact the tracking tunnel's effectiveness at night. The removal of the switch exacerbates this issue. A switch indicates the need for the user to interact again to switch off the seven segment display in Design A, whereas a button does not offer the same indication.</p>
+                    <p>This step makes it very unlikely that a quick change in voltage due to bouncing would register while not requiring the user to press the button longer than usual. To further improve the user interaction experience, we opted to remove the reset button and implement its functionality in a long press of the single push button. We found that 1500 ms was long enough to be intentional through testing but short enough not to frustrate the user.</p>
+                    <p>We felt this was an important addition because leaving the LCD on, which could trivially happen during the day when it is not easily noticeable, could significantly impact the tracking tunnel's effectiveness at night. The removal of the switch exacerbates this issue. A switch indicates the need for the user to interact again to switch off the seven segment display in Design A, whereas a button does not offer the same indication.</p>
                     <p>To get the initial sensor reading, we used a GPIO pin to read the sensor's output. The sensor's output was converted to a discrete value by the Arduino's ADC. The ADC returned a value from 0 to 1023 due to the 10 bit ADC present in the Arduino. To convert this into an actual voltage, we used the following equations. To improve the sensor readings, we implemented a two-step process to filter out noise. We thought this was important because we found the sensor inaccurate at times, an experience not specific to us.</p>
                     <p>The first step involves polling (reading the sensor's voltage) multiple times and selecting the median. We implemented this process by using the SharpIR library provided by Guillaume Rico. We modified the library in two key ways:</p>
                     <ul>
                         <li>We changed the distance value the library returned to a floating-point number rather than an integer.</li>
-                        <li>We changed the equation used for the characteristic curve to our own</li>
+                        <li>We changed the equation used for the characteristic curve to our own.</li>
                     </ul>
-                    <p>We then did a process similar to the button debouncing. We checked to see if the sensor distance had varied by more than 5 mm for more than 100ms. This process was a convenient place to enforce the specification, but I should note that we could have reduced the time and checked for the specification requirements elsewhere in the code.</p>
+                    <p>We then implemented a process similar to button debouncing to improve confidience in the IR sensor readings. We checked to see if the sensor distance had varied by more than 5 mm for more than 100ms. This process was a convenient place to enforce the specification, but I should note that we could have reduced the time and checked for the specification requirements elsewhere in the code.</p>
                 </section>
                 <section id="conclusion">
                     <h2>Conclusion</h2>
@@ -136,12 +136,12 @@
                         <span class="image-caption">Figure 3: Photo of completed prototype.</span>
                     </div>
                     <p>Overall, this was a fun project to do. You can see the final product below in Figure 3, considering that this is a prototype.</p>
-                    <p>The prototype successfully implements all the required functionality and provides the groundwork for future development through software and hardware development. I learnt a lot about using an oscilloscope to debug issues with electrical circuits and got more experience programming an Arduino. I also learnt how to better delegate work to other team members and work collaboratively on software.</p>
-                    <p>If I were to do this project again, I would approach it slightly differently. I would write the software in conjunction with hardware instead of writing all the software initially then developing the hardware. Due to the former approach, I encountered non-trivial bugs caused by complex code. By building both systems at the same time, I can test functionality as I add it.</p>
+                    <p>The prototype successfully implements all the required functionality and provides the groundwork for future development through software and hardware development. I learnt a lot about using an oscilloscope to debug issues with electrical circuits and got more experience programming an Arduino. I developed better delegation skills to work more effectively with team members and facilitate collaborative software development.</p>
+                    <p>If I were to complete this project again, I would approach it differently. I would write the software in conjunction with hardware development instead of writing all the software initially then developing the hardware. Due to the latter approach, I encountered non-trivial bugs caused by complex code. By building both systems at the same time, I can test functionality as I add it.</p>
                 </section>
                 <section id="learning">
                     <h2>What I've Learnt</h2>
-                    <p>Below are some learning highlights.</p>
+                    <p>Listed below are some learning highlights.</p>
                     <div class="learning-sections">
                         <div class="learning-section">
                             <h3>General</h3>
@@ -153,13 +153,13 @@
                             <h3>C / C++ Programming</h3>
                             <ul>
                                 <li>I've gathered more experience working with the Arduino and the constraints it brings, such as limited memory and lack of the C++ standard library.</li>
-                                <li>I've more gotten more experience writing modular and extensible C code.</li>
+                                <li>I've attained more experience writing modular and extensible C code.</li>
                             </ul>
                         </div>
                         <div class="learning-section">
                             <h3>Arduino / Electronics</h3>
                             <ul>
-                                <li>I got more experience prototyping an electrical circuit on a breadboard.</li>
+                                <li>I obtained more experience prototyping an electrical circuit on a breadboard.</li>
                                 <li>I learnt how to use a DSO-X 3012A oscilloscope to probe the IR sensor and camera trigger for debugging purposes.</li>
                                 <li>I got more experience reading analogue sensor information and converting that into usable information.</li>
                             </ul>
@@ -168,7 +168,7 @@
                 </section>
             </section>
             <section class="article-controls">
-                <a class="previous-article" href="greendale_community_trust.html">&larr; Case Study: Greendale Community Trust</a>
+                <a class="previous-article" href="greendale_community_trust.php">&larr; Case Study: Greendale Community Trust</a>
                 <a class="next-article">Case Study: Trader Seas &rarr;</a>
             </section>
         </article>
