@@ -10,10 +10,10 @@
 <body>
     <nav class="static">
         <div class="back-block">
-            <div class="logo">
-                <span class="logo-text">AJ</span>
-            </div>
-            <a href="index.html">&larr; Home</a>
+            <a href="../content/index.php"><div class="logo">
+                <span>AJ</span>
+            </div></a>
+            <a href="index.php">&larr; Home</a>
         </div>
     </nav>
     <div class="page-content">
@@ -41,9 +41,9 @@
                 </section>
                 <section id="context">
                     <h2>Design Context</h2>
-                    <p>The Greendale Community Trust contacted me in 2020 after completing work for them the previous year through my high school. They asked me to finish off the work I started on the website I created for them. I volunteered to do this to give back to the local community and get some more experience.</p>
+                    <p>The Greendale Community Trust contacted me in 2020 after completing work for them the previous year through my high school. They asked me to complete the work I started on the website I created for them. I volunteered to do this as I wanted to give back to the local community and get some more experience.</p>
                     <p>The trust's mission is to provide funding for the maintenance, repair, restoration and improvement of buildings, structures, facilities and places of historical interest, public amenity or recreational benefit in the district of Greendale, Canterbury.</p>
-                    <p>The trust has undertaken many projects, including the T W Adams Arboretum. The Arboretum is a site of national historical significance, containing many unique tree specimens planted by T W Adams. In conjunction with the School of Forestry, the trust has undertaken the restoration of the Arboretum, including tree surgery, fencing and general tidying up of the site. The trust has added a walkway as part of the restoration, allowing locals to walk through the Arboretum. QR codes have been added to the trees throughout the Arboretum to enable visitors to read more about the trees. Therefore the trust required someone to produce a website that allows users to view tree details and learn more about the trust.</p>
+                    <p>The trust has undertaken many projects, including the T W Adams Arboretum. The Arboretum is a site of national historical significance, containing many unique tree specimens planted by T W Adams. In conjunction with the School of Forestry, the trust has undertaken the restoration of the Arboretum, including tree surgery, fencing and general upkeep of the site. The trust has added a walkway as part of the restoration, allowing locals to walk through the Arboretum. QR codes have been added to the trees throughout the Arboretum to enable visitors to read more about the trees. Therefore the trust required someone to produce a website that allows users to view tree details and learn more about the trust.</p>
                 </section>
                 <section id="requirements">
                     <h2>Design Requirements / Specifications</h2>
@@ -56,11 +56,11 @@
                         <li>Allow an administrator to add, edit, and remove trees and damage reports.</li>
                     </ul>
                     <p>I decided that the best way to achieve these goals was to create a dynamic website that pulls information from a database. The QR codes placed on trees would encode a link that contained a unique id for the individual tree and provide a page to view all the trees and search for a specific tree.</p>
-                    <p>I would provide a form on the user-facing site to allow visitors to report damage to any trees. I also decided that I would create an admin panel that would contain all the functionality that the administrator would require.</p>
+                    <p>I would provide a form on the user-facing site to allow visitors to report damage to any trees. I also created an admin panel that would contain all the functionality that the administrator would require.</p>
                 </section>
                 <section id="frontend">
                     <h2>Front End Design</h2>
-                    <p>For the front end design, I tried to keep the design as straightforward as possible while still adding some visual flair. My reasoning for this was two-fold. Firstly, it allowed me to move on to the backend quickly. Secondly, and most importantly, a simple design meant that broad browser capability was easy to achieve. I set myself a goal of having this website supporting all major web browsers down to IE10. Broad browser compatibility was a unique challenge for me. I started learning about web design in 2016 when flexbox had been widely established and supported, and table/float based layouts only existed in nightmares or compatibility conscious individuals. The final design for the home, Arboretum, and specific tree pages can be seen below in Figures 1, 2, and 3, respectively.</p>
+                    <p>For the front end design, I tried to keep the design as simplistic as possible while still adding some visual flair. My reasoning for this was two-fold. Firstly, it allowed me to move on to the backend quickly. Secondly, and most importantly, a simple design meant that broad browser capability was easy to achieve. I set myself a goal of having this website supporting all major web browsers down to IE10. Broad browser compatibility was a unique challenge for me. I started learning about web design in 2016 when flexbox had been widely established and supported, and table/float based layouts only existed in nightmares or compatibility conscious individuals. The final design for the home, Arboretum, and specific tree pages can be seen below in Figures 1, 2, and 3, respectively.</p>
                     <div class="triple-image-container">
                         <div class="triple-image">
                             <img src="../images/greendale_community_trust/greendale_community_trust_web.png" alt="Homepage of the Greendale Community Trust website">
@@ -79,7 +79,7 @@
                 </section>
                 <section id="backend">
                     <h2>Backend Design</h2>
-                    <p>For the backend, I decided to use PHP as it was what I learnt in high school, and it has a good library ecosystem and provided a friendly interface for executing SQL. I used PHP to read and process form contents when the user submitted. I also used PHP to query the database to populate the Arboretum page and specific tree pages. The design of the login panel, admin panel, and edit page can be seen in Figures 4, 5, and 6, respectively.</p>
+                    <p>For the backend, I decided to use PHP as I have experience from high school, and it has a good library ecosystem and provided a friendly interface for executing SQL. I used PHP to read and process form contents when the user submitted. I also used PHP to query the database to populate the Arboretum page and specific tree pages. The design of the login panel, admin panel, and edit page can be seen in Figures 4, 5, and 6, respectively.</p>
                     <div class="triple-image-container">
                         <div class="triple-image">
                             <img src="../images/greendale_community_trust/greendale_community_trust_web_4.png" alt="Login page for admin panel">
@@ -97,7 +97,7 @@
                 </section>
                 <section id="conclusion">
                     <h2>Conclusion</h2>
-                    <p>Overall, this project allowed me to learn a lot about creating a website with complex functionality from start to finish. This project was also the first time I had published a website and introduced me to new issues, such as namespace configuration and SSL certification. In retrospect, I would do many things differently for both the front and back end, but I'm still happy with my completed work. For example, I would probably utilise salting for the user passwords to add extra security. I would also use a PHP framework such as Laravel to accelerate development and provide more elegant image management and manipulation solutions instead of reinventing the wheel.</p>
+                    <p>Overall, this project allowed me to learn a lot about creating a website with complex functionality from start to finish. This project was also the first time I had published a website and introduced me to new issues, such as namespace configuration and SSL certification. In retrospect, I would do many things differently for both the front and back end. For example, I would probably utilise salting for the user passwords to add extra security. I would also use a PHP framework such as Laravel to accelerate development and provide more elegant image management and manipulation solutions instead of reinventing the wheel.</p>
                     <a class="link-button" href="https://greendalecommunitytrust.co.nz">View Website</a>
                 </section>
                 <section id="learning">
@@ -141,29 +141,12 @@
             </section>
             <section class="article-controls">
                 <a class="previous-article">&larr; Case Study: Trader Seas</a>
-                <a class="next-article" href="tracking_tunnel.html">Case Study: Next Generation Tracking Tunnel &rarr;</a>
+                <a class="next-article" href="tracking_tunnel.php">Case Study: Next Generation Tracking Tunnel &rarr;</a>
             </section>
         </article>
     </div>
-    <footer>
-        <div class="footer-content-container">
-            <h4>Colophon</h4>
-            <p>Designed By Alex Stiles</p>
-            <p>&copy; 2021</p>
-        </div>
-        <div class="footer-content-container">
-            <h4>Purpose</h4>
-            <p>Act as portfolio website for my personal and university work.</p>
-        </div>
-        <div class="footer-content-container">
-            <h4>Acknowledgements</h4>
-            <p>Multiple libraries were used to make this website</p>
-            <ul>
-                <li><a href="https://mattboldt.com/demos/typed-js/">typing.js</a> &#8212; JS library for header typing animation</li>
-                <li><a href="www.unsplash.com">unsplash.com</a> &#8212; Free high quality images</li>
-                <li><a href="https://lokeshdhakar.com/projects/color-thief/">Colour Thief</a> &#8212; Gets the dominant colour in an image, used for the projects animation.</li>
-            </ul>
-        </div>
-    </footer>
+    <?php 
+        include("../content/footer.php");
+    ?>
 </body>
 </html> 

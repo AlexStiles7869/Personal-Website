@@ -13,6 +13,31 @@ window.onscroll = () => {
     }
 }
 
+// Lazy Loading
+
+document.addEventListener("DOMContentLoaded", function() {
+    var lazyloadImages;    
+  
+    if ("IntersectionObserver" in window) {
+      lazyloadImages = document.querySelectorAll(".lazy");
+      var imageObserver = new IntersectionObserver(function(entries, observer) {
+        entries.forEach(function(entry) {
+          if (entry.isIntersecting) {
+            var image = entry.target;
+            image.src = image.dataset.src;
+            image.classList.remove("lazy");
+            init_background(image);
+            imageObserver.unobserve(image);
+          }
+        });
+      });
+  
+      lazyloadImages.forEach(function(image) {
+        imageObserver.observe(image);
+      });
+    }
+  })
+
 // Colouring of projects section
 
 let project_cards = document.getElementsByClassName("project-card");
@@ -44,19 +69,19 @@ function set_projects_background(img, colours) {
     });
 }
 
-for (let i = 0; i < project_cards.length; i++) {
-    let img = project_cards[i].querySelector("img");
-    img.id = `img-${i}`;
-    if (img.complete) {
-        colours = colorThief.getColor(img);
-        set_projects_background(img, colours);
-    } else {
-        img.addEventListener("load", () => {
+function init_background(img, i) {
+    // for (let i = 0; i < project_cards.length; i++) {
+        if (img.complete) {
             colours = colorThief.getColor(img);
             set_projects_background(img, colours);
-        });
-    }
-
+        } else {
+            img.addEventListener("load", () => {
+                colours = colorThief.getColor(img);
+                set_projects_background(img, colours);
+            });
+        }
+    
+    // }
 }
 
 var options = {

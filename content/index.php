@@ -9,9 +9,9 @@
 </head>
 <body>
     <nav>
-        <div class="logo">
+        <a href="../content/index.php"><div class="logo">
             <span>AJ</span>
-        </div>
+        </div></a>
         <div id="nav-links">
             <a class="active" href="#home-anchor">Home</a>
             <a href="#projects-anchor">Projects</a>
@@ -31,7 +31,7 @@
                     <img src="../images/general/me.jpg" alt="Photo of me">
                 </div>
                 <div id="about-content">
-                    <h3>I'm currently 19 years old studying toward an Engineering degree with Honours majoring in Computer Engineering at the University of Canterbury, in sunny Christchurch, New Zealand.</h3>
+                    <h3>I'm currently a 19-year-old studying towards an Engineering degree with Honours majoring in Computer Engineering at the University of Canterbury, in Christchurch, New Zealand.</h3>
                     <div id="about-location-image">
                         <img src="https://source.unsplash.com/YylrhMRSP_U/1280x800" alt="Photo of the Port Hills in Christchurch">
                         <span>Port Hills, Christchurch, New Zealand / By a friend, <a href="https://unsplash.com/photos/YylrhMRSP_U">Edward Manson</a>.</span>
@@ -49,7 +49,7 @@
                         <div class="column">
                             <h4>Hobbies</h4>
                             <ul>
-                                <li>Programming (surprising huh!)</li>
+                                <li>Programming</li>
                                 <li>Biking</li>
                                 <li>Video Games</li>
                             </ul>
@@ -64,9 +64,9 @@
                 <div class="column">
                     <h2>Personal</h2>
                     <div class="project-cards">
-                        <a class="primary-project" href="../content/greendale_community_trust.html">
+                        <a class="primary-project" href="../content/greendale_community_trust.php">
                             <div class="project-card">
-                                <img src="../images/greendale_community_trust/greendale_community_trust.jpg" alt="">
+                                <img class="lazy" data-src="../images/greendale_community_trust/greendale_community_trust.jpg" alt="">
                                 <h3 ">Greendale Community Trust</h3>
                             </div> 
                         </a>
@@ -75,27 +75,27 @@
                 <div class="column">
                     <h2>University</h2>
                     <div class="project-cards">
-                        <a href="../content/tracking_tunnel.html">
+                        <a href="../content/tracking_tunnel.php">
                             <div class="project-card">
-                                <img src="../images/next_generation_tracking_tunnel/nz_forest.jpg" alt="Photo of New Zealand forest">
+                                <img id="img-0" class="lazy" data-src="../images/next_generation_tracking_tunnel/nz_forest.jpg" alt="Photo of New Zealand forest">
                                 <h3>Next Generation Tracking Tunnel</h3>
                             </div>
                         </a>
                         <a>
                             <div class="project-card">
-                                <img src="../images/trader_seas/trader_seas_2.png" alt="Screenshot of Trader Seas">
+                                <img id="img-1" class="lazy" data-src="../images/trader_seas/trader_seas_2.png" alt="Screenshot of Trader Seas">
                                 <h3 id="case-incomplete">Trader Seas</h3>
                             </div>
                         </a>
                         <a>
                             <div class="project-card">
-                                <img src="../images/arduino_shield/shield.jpg" alt="Photo of Arduino Shield">
+                                <img id="img-2" class="lazy" data-src="../images/arduino_shield/shield.jpg" alt="Photo of Arduino Shield">
                                 <h3 id="case-incomplete">Arduino Shield</h3>
                             </div>
                         </a>
                         <a>
                             <div class="project-card">
-                                <img src="../images/smart_plug/oled_gui.png" alt="Screenshot of OLED GUI">
+                                <img id="img-3" class="lazy" data-src="../images/smart_plug/oled_gui.png" alt="Screenshot of OLED GUI">
                                 <h3 id="wip">Temperature Controlled Smart Plug</h3>
                             </div> 
                         </a>
@@ -132,26 +132,9 @@
             </form>
         </section>
     </div>
-    <footer>
-        <div class="footer-content-container">
-            <h4>Colophon</h4>
-            <p>Designed By Alex Stiles</p>
-            <p>&copy; 2021</p>
-        </div>
-        <div class="footer-content-container">
-            <h4>Purpose</h4>
-            <p>Act as portfolio website for my personal and university work.</p>
-        </div>
-        <div class="footer-content-container">
-            <h4>Acknowledgements</h4>
-            <p>Multiple libraries were used to make this website</p>
-            <ul>
-                <li><a href="https://mattboldt.com/demos/typed-js/">typing.js</a> &#8212; JS library for header typing animation</li>
-                <li><a href="www.unsplash.com">unsplash.com</a> &#8212; Free high quality images</li>
-                <li><a href="https://lokeshdhakar.com/projects/color-thief/">Colour Thief</a> &#8212; Gets the dominant colour in an image, used for the projects animation.</li>
-            </ul>
-        </div>
-    </footer>
+    <?php 
+        include("../content/footer.php");
+    ?>
     <script src="../js/colour_thief.js"></script>
     <script src="../js/typed.js"></script>
     <script src="../js/main.js"></script>

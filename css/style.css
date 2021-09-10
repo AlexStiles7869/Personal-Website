@@ -34,7 +34,7 @@ nav .back-block {
 }
 
 nav .back-block > *:nth-child(2) {
-    margin-left: 2.4325rem;
+    margin-left: 2.4325rem !important;
 }
 
 nav .back-block a:not(.logo-text) {
@@ -42,7 +42,7 @@ nav .back-block a:not(.logo-text) {
     font-weight: 500;
 }
 
-nav > #nav-links > a, nav .back-block a {
+nav > #nav-links > a, nav .back-block a:not(:first-child) {
     margin-left: 2rem;
     font-weight: 500;
     color: black;
@@ -52,7 +52,7 @@ nav > #nav-links > a, nav .back-block a {
     cursor: pointer;
 }
 
-nav > #nav-links > a::after, nav .back-block a::after {
+nav > #nav-links > a::after, nav .back-block a:not(:first-child)::after {
     content: "";
     position: absolute;
     background-color: black;
@@ -63,7 +63,7 @@ nav > #nav-links > a::after, nav .back-block a::after {
     transition: width 200ms;
 }
 
-nav > #nav-links > a:hover::after, nav > #nav-links > a.active::after, nav .back-block a:hover::after {
+nav > #nav-links > a:hover::after, nav > #nav-links > a.active::after, nav .back-block a:not(:first-child):hover::after {
     width: 100%;
 }
 
@@ -275,7 +275,7 @@ section h1 ~ p {
 
 .project-cards a {
     text-decoration: none;
-}
+=}
 
 .project-cards a[href=""] {
     cursor: default;
@@ -299,6 +299,7 @@ section h1 ~ p {
     object-position: center;
     flex-grow: 1;
     display: block;
+    background-color: #eee;
 }
 
 .project-card h3 {
